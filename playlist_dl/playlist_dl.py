@@ -3,8 +3,14 @@
 import json
 import os
 
-from .Video import Video
-from .Playlist import Playlist
+try:
+	from .Video import Video
+except SystemError:
+	from Video import Video
+try:
+	from .Playlist import Playlist
+except SystemError:
+	from Playlist import Playlist
 
 CONF = {}
 PL = ''

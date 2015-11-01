@@ -1,6 +1,9 @@
 import json
 import youtube_dl
-from .Video import Video
+try:
+	from .Video import Video
+except SystemError:
+	from Video import Video
 
 class Playlist():
 	'''
