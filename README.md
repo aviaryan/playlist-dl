@@ -26,7 +26,7 @@ Youtube playlist downloader
 * `end` - The item in playlist till where downloading will be done.
 * `output_format` - The format to convert the downloaded video to. (eg > mkv,mp4,flv,webm)
 * `download.resolution` - The height of the video to download. If set to 0, then bestvideo will be downloaded.
-* `download.video_format` - The format of the video stream to download. Note that this is different from `output_format`.
+* `download.video_format` - The format of the video stream to download. Note that this is different from `output_format` (eg > flv,webm,mp4).
 * `download.bitrate` - The bitrate of the audio to download. If set to 0, then bestaudio will be downloaded.
 * `download.audio_format` - The format of the audio stream to download. (eg > webm,m4a)
 
