@@ -1,6 +1,6 @@
 import json
 import youtube_dl
-import Video
+from Video import Video
 
 class Playlist():
 	'''
@@ -15,7 +15,7 @@ class Playlist():
 		'''
 		if url == 'playlist.json':
 			ptr = open('playlist.json', 'r')
-			self.res = json.loads(ptr.read()).entries
+			self.res = json.loads(ptr.read())['entries']
 			ptr.close()
 		else:
 			ydl = youtube_dl.YoutubeDL()
@@ -28,13 +28,13 @@ class Playlist():
 			ptr.close()
 
 
-	def download(index, oext=''):
+	def download(self, index, res='', bitrate='', vext='', aext='', oext=''):
 		'''
 		Resumes the download of item at index 'index' from the playlist
 		'''
 		vobj = self.res[index-1]
-		video = Video(vobj, oext)
-		video.download() # params
+		video = Video(vobj)
+		video.download(res, bitrate, vext, aext, oext) # params
 
 
 	def makeSimpleList(self):

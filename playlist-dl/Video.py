@@ -8,13 +8,12 @@ class Video():
 	Get video info, parse them and download videos
 	'''
 
-	def __init__(self, vobj, oext=''):
+	def __init__(self, vobj):
 		'''
 		Inits the Video class
 		'''
 		self.vobj = vobj
 		self.url = vobj['webpage_url']
-		self.oext = oext
 
 
 	def getVStream(self, height, ext=''):
@@ -97,7 +96,7 @@ class Video():
 		return [v , a]
 
 
-	def download(self, res='', bitrate='', vext='', aext=''):
+	def download(self, res='', bitrate='', vext='', aext='', oext=''):
 		'''
 		Starts the video download in the specified format
 		'''
@@ -106,21 +105,26 @@ class Video():
 			if o[0] == 0:
 				pstr = 'youtube-dl'
 			else:
-				pstr = 'youtube-dl -f ' + o[0]
+				pstr = 'youtube-dl -f ' + str(o[0])
 		else:
 			if o[0] == 0:
 				o[0] = 'bestvideo'
 			if o[1] == 0:
 				o[1] = 'bestaudio'
-			pstr = 'youtube-dl -f ' + o[0] + '+' + o[1]
+			pstr = 'youtube-dl -f ' + str(o[0]) + '+' + str(o[1])
 			if o[0] == 0 and o[1] == 0:
 				pstr = 'youtube-dl' # make it back in case both 0
-			subprocess.call(pstr
-				+ ' '
-				+ self.url
-				+ '--merge-output-format '
-				+ this.oext
-			)
+
+		mconfigs = ''
+		if oext:
+			mconfigs = ' ' + '--merge-output-format ' + oext
+		mconfigs += ' ' + '--external-downloader aria2c'
+
+		subprocess.call(pstr
+			+ ' '
+			+ self.url
+			+ mconfigs
+		)
 
 
 

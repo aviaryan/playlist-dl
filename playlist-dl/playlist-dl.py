@@ -12,10 +12,9 @@ def readConfig():
 	'''
 	Reads the config file config.json
 	'''
+	global CONF
 	ptr = open('config.json', 'r')
 	CONF = json.loads(ptr.read())
-	for i in CONF:
-		print(i)
 	ptr.close()
 
 
@@ -23,6 +22,7 @@ def saveConfig():
 	'''
 	Saves the CONF variable back to config.json
 	'''
+	global CONF
 	ptr = open('config.json', 'w')
 	ptr.write(json.dumps(CONF, indent=4))
 	ptr.close()
@@ -42,20 +42,35 @@ def start():
 			PL = Playlist(CONF['url'])
 	else:
 		url = getin('You are creating a new project. Give URL of the playlist')
+		PL = Playlist(url)
 		CONF = {
 			'output_format': '',
-			'start': 0,
-			'end': 0,
+			'start': 1,
+			'end': len(PL.res),
 			'download': {
 				'resolution': 720,
 				'video_format': '',
-				'bitrate': '',
+				'bitrate': 0,
 				'audio_format': '',
 			},
 			'url': url
 		}
 		saveConfig()
-		PL = Playlist(CONF['url'])
+		confirm = input('Config saved as config.json. Edit it if you please. Then press ENTER ')
+		readConfig()
+
+	# CONFIG read/create done. Now downloading
+
+	while CONF['start'] <= CONF['end']:
+		PL.download(
+			CONF['start'], 
+			CONF['download']['resolution'],
+			CONF['download']['bitrate'], 
+			CONF['download']['video_format'], 
+			CONF['download']['audio_format'], 
+			CONF['output_format'])
+		CONF['start']+=1
+		saveConfig()
 
 
 
