@@ -14,10 +14,10 @@ Youtube playlist downloader
 
 * To start a new playlist download, create a new folder and open terminal (cmd) in it.
 * Then run `playlist-dl`
-* Give the playlist link and playlist-dl (youtube-dl actually) will start scanning the playlists.
+* Give the playlist link and playlist-dl (actually youtube-dl) will start scanning the playlist.
 * After that it will create a config.json file in that folder. Edit that if needed.
-* Download will begin soon after.
-* You can close the terminal at any time. Reopening the terminal at that folder and running `playlist-dl` will resume the downloads.
+* Videos will start downloading one by one.
+* You can close the terminal any time. Reopening the terminal in that folder and running `playlist-dl` will resume the downloads.
 
 
 ### Config.json
@@ -30,4 +30,4 @@ Youtube playlist downloader
 * `download.bitrate` - The bitrate of the audio to download. If set to 0, then bestaudio will be downloaded.
 * `download.audio_format` - The format of the audio stream to download. (eg > webm,m4a)
 
-**NOTE** - If the downloader finds no match with your `download.` settings, then it will automatically settle with the next preferable audio/video.
+**NOTE** - If the program finds no match with your `download.` settings, then it will automatically settle with the most preferable audio/video options.
