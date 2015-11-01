@@ -1,1 +1,1 @@
-recursive-include playlist_dl *
+recursive-include playlist_dl/*.py

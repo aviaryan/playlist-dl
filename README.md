@@ -7,4 +7,4 @@ Youtube playlist downloader
 
 * Resumable downloading
 * Video resolution, video format, audio bitrate, audio format can be configured
-* Output format (after converting) can also be specified
+* Video Output format (via conversion) can also be specified

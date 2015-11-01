@@ -1,12 +1,15 @@
+#!/usr/bin/env python
+
 import json
 import os
 
-from Video import Video
-from Playlist import Playlist
+from .Video import Video
+from .Playlist import Playlist
 
 CONF = {}
 PL = ''
 
+# python C:\Users\Avi\Documents\GitHub\playlist-dl\playlist_dl\playlist_dl.py
 
 def readConfig():
 	'''
@@ -28,7 +31,7 @@ def saveConfig():
 	ptr.close()
 
 
-def start():
+def run():
 	'''
 	Starts the app
 	'''
@@ -51,7 +54,7 @@ def start():
 				'resolution': 720,
 				'video_format': '',
 				'bitrate': 0,
-				'audio_format': '',
+				'audio_format': ''
 			},
 			'url': url
 		}
@@ -85,4 +88,4 @@ def getin(msg):
 
 
 if __name__ == '__main__':
-	start()
+	run()

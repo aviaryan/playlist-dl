@@ -1,6 +1,6 @@
 import json
 import youtube_dl
-from Video import Video
+from .Video import Video
 
 class Playlist():
 	'''

@@ -7,7 +7,6 @@ def read(fname):
 
 setup(
     install_requires = ['youtube-dl'],
-
     name = "playlist-dl",
     version = "0.1",
     author = "Avi Aryan",
@@ -16,18 +15,24 @@ setup(
     license = "Apache",
     keywords = "youtube playlist download youtube-dl ytd",
     url = "http://github.com/aviaryan/playlist-dl",
-    packages=['playlist_dl'],
-    long_description=read('README.md'),
-    classifiers=[
+    include_package_data = True,
+    packages = ['playlist_dl'],
+    package_data = {
+        '': ['*.py']
+    },
+    exclude_package_data = {
+        '': ['*.pyc']
+    },
+    long_description = read('README.md'),
+    classifiers = [
         "Development Status :: 3 - Beta",
         "Topic :: Utilities",
         "License :: Apache License v2.0",
     ],
-    include_package_data=True, # needed for MANIFEST
-
-    entry_points={
+    entry_points = {
         'console_scripts': [
-            'playlist-dl = playlist_dl.playlist_dl:start'
+            'playlist-dl = playlist_dl.playlist_dl:run',
         ]
-    }
+    },
+    zip_safe = False
 )
