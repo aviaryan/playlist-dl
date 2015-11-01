@@ -1,6 +1,6 @@
 # playlist-dl
 
-Youtube playlist downloader
+Youtube playlist downloader. Based on the majestic [youtube-dl](http://youtube-dl.org/)
 
 
 ### Features
@@ -8,6 +8,20 @@ Youtube playlist downloader
 * Resumable downloading
 * Video resolution, video format, audio bitrate, audio format can be configured
 * Video Output format (via conversion) can also be specified
+
+
+### Installation
+
+Python 3 only.  
+Get it from pip
+```
+pip install playlist-dl
+```
+
+or download the zip and execute the following
+```
+python setup.py install
+```
 
 
 ### Tutorial
