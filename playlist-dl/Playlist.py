@@ -11,10 +11,10 @@ class Playlist():
 		'''
 		Initialises the class
 		url is the playlist url
-		If url = video.json, then it loads from the local playlist data.
+		If url = playlist.json, then it loads from the local playlist data.
 		'''
-		if url == 'video.json':
-			ptr = open('video.json', 'r')
+		if url == 'playlist.json':
+			ptr = open('playlist.json', 'r')
 			self.res = json.loads(ptr.read()).entries
 			ptr.close()
 		else:
@@ -22,15 +22,33 @@ class Playlist():
 			res = ydl.extract_info(url, download=False)
 			if 'entries' in res:
 				self.res = res['entries']
-			ptr = open('video.json', 'w')
+			self.makeSimpleList()
+			ptr = open('playlist.json', 'w')
 			ptr.write(json.dumps(res, indent=4))
 			ptr.close()
 
 
-	def download(index):
+	def download(index, oext=''):
 		'''
 		Resumes the download of item at index 'index' from the playlist
 		'''
 		vobj = self.res[index-1]
-		video = Video(vobj)
+		video = Video(vobj, oext)
 		video.download() # params
+
+
+	def makeSimpleList(self):
+		'''
+		Saves a simple json file for users to see what they have in the playlist
+		'''
+		ptr = open('videolist.json', 'w')
+		dic = {}
+		c = 1
+		for i in self.res:
+			dic[c] = {
+				'title': i['title'],
+				'url': i['webpage_url']
+			}
+			c+=1
+		ptr.write(json.dumps(dic, indent=4))
+		ptr.close()

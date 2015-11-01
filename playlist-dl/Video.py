@@ -1,5 +1,6 @@
 import json
 import youtube_dl
+from platform import subprocess
 
 class Video():
 	'''
@@ -7,12 +8,13 @@ class Video():
 	Get video info, parse them and download videos
 	'''
 
-	def __init__(self, vobj):
+	def __init__(self, vobj, oext=''):
 		'''
 		Inits the Video class
 		'''
 		self.vobj = vobj
 		self.url = vobj['webpage_url']
+		self.oext = oext
 
 
 	def getVStream(self, height, ext=''):
@@ -106,27 +108,39 @@ class Video():
 			else:
 				pstr = 'youtube-dl -f ' + o[0]
 		else:
+			if o[0] == 0:
+				o[0] = 'bestvideo'
+			if o[1] == 0:
+				o[1] = 'bestaudio'
 			pstr = 'youtube-dl -f ' + o[0] + '+' + o[1]
+			if o[0] == 0 and o[1] == 0:
+				pstr = 'youtube-dl' # make it back in case both 0
+			subprocess.call(pstr
+				+ ' '
+				+ self.url
+				+ '--merge-output-format '
+				+ this.oext
+			)
 
 
 
 # ydl = youtube_dl.YoutubeDL()
 # url = 'https://www.youtube.com/watch?v=InF16sp7J0M'
 # res = ydl.extract_info(url, download=False)
-ptr = open('video.json', 'r')
-res = json.loads(ptr.read())
-ptr.close()
+# ptr = open('video.json', 'r')
+# res = json.loads(ptr.read())
+# ptr.close()
 
 
-obj = res
-res = json.dumps(res, indent=4)
-# print(res)
-ptr = open('video.json', 'w')
-ptr.write(res)
-ptr.close()
+# obj = res
+# res = json.dumps(res, indent=4)
+# # print(res)
+# ptr = open('video.json', 'w')
+# ptr.write(res)
+# ptr.close()
 
-vc = Video(obj)
+# vc = Video(obj)
 
-print( vc.getVStream(720) )
-print( vc.getAStream(128))
-print( vc.getBestDL(480) )
+# print( vc.getVStream(720) )
+# print( vc.getAStream(128))
+# print( vc.getBestDL(480) )
