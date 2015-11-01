@@ -120,6 +120,7 @@ class Video():
 			mconfigs = ' ' + '--merge-output-format ' + oext
 			mconfigs += ' ' + '--recode-video ' + oext
 		mconfigs += ' ' + '--external-downloader aria2c'
+		mconfigs += ' ' + '--external-downloader-args -x 8'
 
 		subprocess.call(pstr
 			+ ' '
