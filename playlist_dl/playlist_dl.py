@@ -31,7 +31,9 @@ def saveConfig():
 	'''
 	Saves the CONF variable back to config.json
 	'''
-	global CONF
+	# global CONF
+	if not CONF or not CONF['url']:
+		return
 	ptr = open('config.json', 'w')
 	ptr.write(json.dumps(CONF, indent=4))
 	ptr.close()
@@ -60,7 +62,8 @@ def run():
 				'resolution': 720,
 				'video_format': '',
 				'bitrate': 0,
-				'audio_format': ''
+				'audio_format': '',
+				'more_options': '-o "%(title)s.%(ext)s"'
 			},
 			'url': url
 		}
@@ -71,13 +74,15 @@ def run():
 	# CONFIG read/create done. Now downloading
 
 	while CONF['start'] <= CONF['end']:
-		PL.download(
-			CONF['start'], 
-			CONF['download']['resolution'],
-			CONF['download']['bitrate'], 
-			CONF['download']['video_format'], 
-			CONF['download']['audio_format'], 
-			CONF['output_format'])
+		PL.download( CONF['start'],
+		**{
+			'res': CONF['download']['resolution'],
+			'bitrate': CONF['download']['bitrate'], 
+			'vext': CONF['download']['video_format'],
+			'aext': CONF['download']['audio_format'], 
+			'oext': CONF['output_format'],
+			'more': CONF['download']['more_options']
+		})
 		CONF['start']+=1
 		saveConfig()
 

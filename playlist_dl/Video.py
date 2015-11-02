@@ -96,11 +96,11 @@ class Video():
 		return [v , a]
 
 
-	def download(self, res='', bitrate='', vext='', aext='', oext=''):
+	def download(self, **kwargs):
 		'''
 		Starts the video download in the specified format
 		'''
-		o = self.getBestDL(res, bitrate, vext, aext)
+		o = self.getBestDL(kwargs['res'], kwargs['bitrate'], kwargs['vext'], kwargs['aext'])
 		if len(o) == 1:
 			if o[0] == 0:
 				pstr = 'youtube-dl'
@@ -116,10 +116,13 @@ class Video():
 				pstr = 'youtube-dl' # make it back in case both 0
 
 		mconfigs = ''
+		oext = kwargs['oext']
 		if oext:
 			mconfigs = ' ' + '--merge-output-format ' + oext
 			mconfigs += ' ' + '--recode-video ' + oext
-		mconfigs += ' ' + '--external-downloader aria2c'
+		if kwargs['more']:
+			mconfigs += ' ' + kwargs['more']
+		# mconfigs += ' ' + '--external-downloader aria2c'
 		# mconfigs += ' ' + '--external-downloader-args -x 8'
 
 		subprocess.call(pstr
