@@ -32,8 +32,6 @@ def saveConfig():
 	Saves the CONF variable back to config.json
 	'''
 	# global CONF
-	if not CONF or not CONF['url']:
-		return
 	ptr = open('config.json', 'w')
 	ptr.write(json.dumps(CONF, indent=4))
 	ptr.close()
@@ -68,6 +66,7 @@ def run():
 			'url': url
 		}
 		saveConfig()
+		print()
 		confirm = input('Config saved as config.json. Edit it if you please. Then press ENTER ')
 		readConfig()
 
@@ -96,7 +95,6 @@ def getin(msg):
 	while not t:
 		t = input(msg + '\n> ')
 	return t
-
 
 if __name__ == '__main__':
 	run()
