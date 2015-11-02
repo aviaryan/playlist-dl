@@ -38,7 +38,7 @@ class Playlist():
 		'''
 		vobj = self.res[index-1]
 		video = Video(vobj)
-		video.download(**kwargs) # params
+		return video.download(**kwargs) # params
 
 
 	def makeSimpleList(self):

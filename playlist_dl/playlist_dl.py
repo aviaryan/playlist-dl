@@ -73,15 +73,18 @@ def run():
 	# CONFIG read/create done. Now downloading
 
 	while CONF['start'] <= CONF['end']:
-		PL.download( CONF['start'],
-		**{
-			'res': CONF['download']['resolution'],
-			'bitrate': CONF['download']['bitrate'], 
-			'vext': CONF['download']['video_format'],
-			'aext': CONF['download']['audio_format'], 
-			'oext': CONF['output_format'],
-			'more': CONF['download']['more_options']
-		})
+		retcode = PL.download( CONF['start'],
+			**{
+				'res': CONF['download']['resolution'],
+				'bitrate': CONF['download']['bitrate'], 
+				'vext': CONF['download']['video_format'],
+				'aext': CONF['download']['audio_format'], 
+				'oext': CONF['output_format'],
+				'more': CONF['download']['more_options']
+			}
+		)
+		if retcode != 0: # if failed, try again
+			continue
 		CONF['start']+=1
 		saveConfig()
 

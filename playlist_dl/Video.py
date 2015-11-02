@@ -122,14 +122,13 @@ class Video():
 			mconfigs += ' ' + '--recode-video ' + oext
 		if kwargs['more']:
 			mconfigs += ' ' + kwargs['more']
-		# mconfigs += ' ' + '--external-downloader aria2c'
-		# mconfigs += ' ' + '--external-downloader-args -x 8'
 
-		subprocess.call(pstr
+		retcode = subprocess.call(pstr
 			+ ' '
 			+ self.url
 			+ mconfigs
 		)
+		return retcode
 
 
 
