@@ -8,6 +8,7 @@ Youtube playlist downloader. Based on the majestic [youtube-dl](http://youtube-d
 * Resumable downloading
 * Video resolution, video format, audio bitrate, audio format can be configured
 * Video Output format (via conversion) can also be specified
+* Other [youtube-dl options](https://github.com/rg3/youtube-dl/blob/master/README.md) are also supported
 
 
 ### Installation
