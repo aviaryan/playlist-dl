@@ -45,7 +45,8 @@ python setup.py install
 * `download.audio_format` - The format of the audio stream to download. (eg > webm,m4a)
 * `download.more_options` - More download options. See [youtube-dl README](https://github.com/rg3/youtube-dl/blob/master/README.md) for the complete list.
 
-**NOTE** - If the program finds no match with your `download.` settings, then it will automatically settle with the most preferable audio/video options.
+**NOTE** - If the program finds no match with your `download.` audio/video settings, then it will automatically settle with the most preferable audio/video options. So if you leave `video_format` blank and just specify resolution, it will look in all formats for that resolution. Therefore it is recommended to specify `output_format` for consistency.
+
 
 ##### Example of a config.json
 
