@@ -1,5 +1,8 @@
 # playlist-dl
 
+[![Version](https://img.shields.io/pypi/v/playlist-dl.svg)](https://pypi.python.org/pypi/playlist-dl)
+[![Downloads](https://img.shields.io/pypi/dw/playlist-dl.svg)](https://pypi.python.org/pypi/playlist-dl)
+
 Youtube playlist downloader. Based on the majestic [youtube-dl](http://youtube-dl.org/)
 
 
