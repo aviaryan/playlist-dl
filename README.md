@@ -45,3 +45,21 @@ python setup.py install
 * `download.audio_format` - The format of the audio stream to download. (eg > webm,m4a)
 
 **NOTE** - If the program finds no match with your `download.` settings, then it will automatically settle with the most preferable audio/video options.
+
+##### Example of a config.json
+
+```json
+{
+    "start": 37,
+    "output_format": "mkv",
+    "url": "https://www.youtube.com/watch?v=6m44ul3fzH4&list=PLfP-5ohlBRxXUWCJRrR0i4Eft02OB_XkE&index=1",
+    "download": {
+        "video_format": "webm",
+        "more_options": "-o \"%(title)s.%(ext)s\" --external-downloader aria2c --external-downloader-args \"-x 8 -s 8 -k 8M\"",
+        "audio_format": "webm",
+        "bitrate": 128,
+        "resolution": 480
+    },
+    "end": 49
+}
+```
