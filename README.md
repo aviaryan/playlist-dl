@@ -56,7 +56,7 @@ python setup.py install
     "url": "https://www.youtube.com/watch?v=6m44ul3fzH4&list=PLfP-5ohlBRxXUWCJRrR0i4Eft02OB_XkE&index=1",
     "download": {
         "video_format": "webm",
-        "more_options": "-o \"%(title)s.%(ext)s\" --external-downloader aria2c --external-downloader-args \"-x 8 -s 8 -k 8M\"",
+        "more_options": "-o \"%(title)s.%(ext)s\" --external-downloader aria2c --external-downloader-args \"-x 16 -s 16 -k 5M\"",
         "audio_format": "webm",
         "bitrate": 128,
         "resolution": 480
