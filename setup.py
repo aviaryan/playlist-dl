@@ -8,7 +8,7 @@ def read(fname):
 setup(
     install_requires = ['youtube-dl'],
     name = "playlist-dl",
-    version = "0.1",
+    version = "0.2",
     author = "Avi Aryan",
     author_email = "avi.aryan123@gmail.com",
     description = "Configurable Youtube Playlist downloader",
