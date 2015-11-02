@@ -43,6 +43,7 @@ python setup.py install
 * `download.video_format` - The format of the video stream to download. Note that this is different from `output_format` (eg > flv,webm,mp4).
 * `download.bitrate` - The bitrate of the audio to download. If set to 0, then bestaudio will be downloaded.
 * `download.audio_format` - The format of the audio stream to download. (eg > webm,m4a)
+* `download.more_options` - More download options. See [youtube-dl README](https://github.com/rg3/youtube-dl/blob/master/README.md) for the complete list.
 
 **NOTE** - If the program finds no match with your `download.` settings, then it will automatically settle with the most preferable audio/video options.
 
