@@ -28,13 +28,6 @@ setup(
         "Development Status :: 4 - Beta",
         "Topic :: Utilities",
         "License :: OSI Approved :: Apache Software License",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.0",
-        "Programming Language :: Python :: 3.1",
-        "Programming Language :: Python :: 3.2",
-        "Programming Language :: Python :: 3.3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3 :: Only"
     ],
     entry_points = {
